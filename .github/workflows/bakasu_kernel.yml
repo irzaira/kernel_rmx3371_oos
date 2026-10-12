@@ -1,4 +1,4 @@
-name: Build Aurora with ReSukiSU
+name: Build Aurora with BakaSU
 
 on:
   push:
@@ -28,9 +28,9 @@ jobs:
       run: |
         git clone --depth=1 https://gitlab.com/provasishh/clang-20.git tc
 
-    - name: Setup ReSukiSU
+    - name: Setup BakaSU
       run: |
-        curl -LSs "https://raw.githubusercontent.com/ReSukiSU/ReSukiSU/main/kernel/setup.sh" | bash
+        curl -LSs "https://raw.githubusercontent.com/Baka-SU/BakaSU/main/kernel/setup.sh" | bash
 
     - name: Build & Package Kernel
       run: |
@@ -98,5 +98,5 @@ jobs:
     - name: Upload flashable zip
       uses: actions/upload-artifact@v4
       with:
-        name: Aurora-OOS16-ReSukiSU
+        name: Aurora-OOS16-BakaSU
         path: anykernel/*.zip
