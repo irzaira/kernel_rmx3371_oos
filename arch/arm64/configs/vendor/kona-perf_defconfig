@@ -1186,3 +1186,12 @@ CONFIG_KSU_SUSFS_SUS_MAP=y
 CONFIG_TCP_CONG_BBR=y
 CONFIG_NET_SCH_FQ=y
 CONFIG_CRYPTO_ZSTD=y
+
+# Aurora tuning
+# BBR berada di dalam `if TCP_CONG_ADVANCED` pada Kconfig; tanpa baris ini
+# CONFIG_TCP_CONG_BBR=y di atas dibuang diam-diam saat olddefconfig.
+# Default congestion control tetap cubic; BBR dipilih lewat sysctl.
+CONFIG_TCP_CONG_ADVANCED=y
+# Governor bawaan schedutil (bukan performance): jika init ROM tidak mengatur
+# governor, CPU tidak terkunci di frekuensi tinggi (panas).
+CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y
