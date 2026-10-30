@@ -69,6 +69,11 @@ jobs:
         grep -E "^CONFIG_KSU" out/.config
         test "$(grep -c -E '^CONFIG_KSU(_SUSFS.*)?=y' out/.config)" = 10 || { echo "Opsi KSU/SUSFS tidak lengkap di .config"; exit 1; }
 
+        echo "== BBR/FQ/zstd/schedutil di .config =="
+        WANT='^CONFIG_(TCP_CONG_ADVANCED|TCP_CONG_BBR|NET_SCH_FQ|CRYPTO_ZSTD|CPU_FREQ_DEFAULT_GOV_SCHEDUTIL)=y'
+        grep -E "$WANT" out/.config
+        test "$(grep -c -E "$WANT" out/.config)" = 5 || { echo "Ada opsi yang dibuang diam-diam oleh Kconfig (cek dependensi)"; exit 1; }
+
         echo "Compiling kernel..."
         make ${MAKE_ARGS} -j$(nproc) 2>&1 | tee build.log
 
