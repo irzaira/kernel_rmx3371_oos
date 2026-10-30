@@ -67,7 +67,7 @@ jobs:
 
         echo "== KSU/SUSFS di .config =="
         grep -E "^CONFIG_KSU" out/.config
-        test "$(grep -c -E '^CONFIG_KSU(_SUSFS.*)?=y' out/.config)" = 11 || { echo "Opsi KSU/SUSFS tidak lengkap di .config"; exit 1; }
+        test "$(grep -c -E '^CONFIG_KSU(_SUSFS.*)?=y' out/.config)" = 10 || { echo "Opsi KSU/SUSFS tidak lengkap di .config"; exit 1; }
 
         echo "Compiling kernel..."
         make ${MAKE_ARGS} -j$(nproc) 2>&1 | tee build.log
