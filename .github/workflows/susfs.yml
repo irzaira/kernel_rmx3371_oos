@@ -74,6 +74,11 @@ jobs:
         grep -E "$WANT" out/.config
         test "$(grep -c -E "$WANT" out/.config)" = 5 || { echo "Ada opsi yang dibuang diam-diam oleh Kconfig (cek dependensi)"; exit 1; }
 
+        echo "== NetHunter di .config =="
+        NH='^CONFIG_(MAC80211|CFG80211_WEXT|ATH9K_HTC|RT2800USB_RT53XX|MT76x2U|NF_TABLES|NFT_COMPAT|SYSVIPC|USB_CONFIGFS_F_HID|USB_CONFIGFS_RNDIS)=y'
+        grep -E "$NH" out/.config
+        test "$(grep -c -E "$NH" out/.config)" = 10 || { echo "Ada opsi NetHunter yang dibuang diam-diam oleh Kconfig"; exit 1; }
+
         echo "Compiling kernel..."
         make ${MAKE_ARGS} -j$(nproc) 2>&1 | tee build.log
 

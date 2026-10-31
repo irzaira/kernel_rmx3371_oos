@@ -1217,3 +1217,39 @@ CONFIG_TCP_CONG_ADVANCED=y
 # Governor bawaan schedutil (bukan performance): jika init ROM tidak mengatur
 # governor, CPU tidak terkunci di frekuensi tinggi (panas).
 CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y
+
+# NetHunter extra: tool Kali (WiFi injection, USB, jaringan)
+# WiFi: wireless-extensions untuk iwconfig/airmon-ng lama, mesh, dan varian chipset USB
+CONFIG_CFG80211_WEXT=y
+CONFIG_MAC80211_MESH=y
+CONFIG_RT2800USB_RT3573=y
+CONFIG_RT2800USB_RT53XX=y
+CONFIG_RT2800USB_RT55XX=y
+CONFIG_RT2800USB_UNKNOWN=y
+CONFIG_RTL8XXXU_UNTESTED=y
+CONFIG_MT76x0U=y
+CONFIG_MT76x2U=y
+# USB gadget/serial tambahan
+CONFIG_USB_CONFIGFS_EEM=y
+CONFIG_USB_CONFIGFS_ECM_SUBSET=y
+CONFIG_USB_NET_CDC_EEM=y
+CONFIG_USB_SERIAL_GENERIC=y
+# Jaringan: capture, VLAN, macvlan, dan nftables (iptables-nft bawaan Kali)
+CONFIG_PACKET_DIAG=y
+CONFIG_VLAN_8021Q=y
+CONFIG_MACVLAN=y
+CONFIG_NF_TABLES=y
+CONFIG_NF_TABLES_INET=y
+CONFIG_NF_TABLES_IPV4=y
+CONFIG_NF_TABLES_IPV6=y
+CONFIG_NFT_COMPAT=y
+CONFIG_NFT_CT=y
+CONFIG_NFT_COUNTER=y
+CONFIG_NFT_LOG=y
+CONFIG_NFT_LIMIT=y
+CONFIG_NFT_NAT=y
+CONFIG_NFT_MASQ=y
+CONFIG_NFT_REDIR=y
+CONFIG_NFT_REJECT=y
+# /dev untuk chroot (tidak di-mount otomatis; init Android tidak terpengaruh)
+CONFIG_DEVTMPFS=y
