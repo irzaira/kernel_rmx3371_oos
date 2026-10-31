@@ -78,12 +78,12 @@ jobs:
         cp out/arch/arm64/boot/dtb anykernel/
 
         cd anykernel
-        zip -r9 Aurora-OOS16-SUSFS-${DT}.zip *
+        zip -r9 Aurora-OOS16-NH-${DT}.zip *
 
     - name: Upload flashable zip
       uses: actions/upload-artifact@v4
       with:
-        name: Aurora-OOS16-SUSFS
+        name: Aurora-OOS16-NH
         path: anykernel/*.zip
 
     - name: Upload build log
